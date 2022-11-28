@@ -14,6 +14,8 @@ public class PrankGenerator {
         String messageContent;
         int randomLineMsg = (int)(Math.random() * Utilities.countLines(config.getMessagesFilePath()));
         messageContent = Utilities.getLineFromNumber(randomLineMsg, config.getMessagesFilePath());
-        return new Prank(config.getSender(), victims, messageContent);
+        String entete = messageContent.split(";")[0];
+        String corps = messageContent.split(";")[1];
+        return new Prank(config.getSender(), victims, messageContent,entete);
     }
 }

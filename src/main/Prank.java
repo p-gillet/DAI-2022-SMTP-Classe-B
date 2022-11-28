@@ -5,10 +5,13 @@ public class Prank {
     private final Group receivers;
     private final String message;
 
-    public Prank(Person sender, Group receivers, String message){
+    private final String entete;
+
+    public Prank(Person sender, Group receivers, String message, String entete){
         this.sender = sender;
         this.receivers = receivers;
         this.message = message;
+        this.entete = entete;
     }
 
     public Person getSender(){
@@ -21,5 +24,9 @@ public class Prank {
 
     public String getMessage(){
         return message;
+    }
+
+    public String getEntete(){
+        return entete;
     }
 }
