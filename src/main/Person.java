@@ -35,4 +35,11 @@ public class Person {
     public void setEmail(String email) {
         this.email = email;
     }
+
+    public static Person[] loadFromFile(String filename){
+        Person[] people;
+
+
+        return new Person[0];
+    }
 }
