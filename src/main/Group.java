@@ -1,5 +1,6 @@
 package src.main;
 
+import java.io.IOException;
 import java.util.Vector;
 
 public class Group {
@@ -19,5 +20,14 @@ public class Group {
 
     public int getSize(){
         return people.size();
+    }
+
+    public static Group loadFromFile(String filename) throws IOException {
+        Group group = new Group();
+        int number = Utilities.countLines(filename);
+        for (int i = 0; i < number; i++){
+            group.addPerson(Person.loadFromFile(filename, i));
+        }
+        return group;
     }
 }

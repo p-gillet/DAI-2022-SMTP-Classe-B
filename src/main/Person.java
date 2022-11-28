@@ -1,5 +1,7 @@
 package src.main;
 
+import java.io.IOException;
+
 public class Person {
     private String firstName;
     private String lastName;
@@ -36,10 +38,15 @@ public class Person {
         this.email = email;
     }
 
-    public static Person[] loadFromFile(String filename){
-        Person[] people;
-
-
-        return new Person[0];
+    public static Person loadFromFile(String filename, int pos) throws IOException {
+        Person person;
+        Utilities.getLineFromNumber(pos, filename);
+        String[] personInfo = Utilities.splitString(Utilities.getLineFromNumber(pos, filename), "\t");
+        if (personInfo.length == 3){
+            person = new Person(personInfo[0], personInfo[1], personInfo[2]);
+        } else {
+            person = new Person(personInfo[0]);
+        }
+        return person;
     }
 }
