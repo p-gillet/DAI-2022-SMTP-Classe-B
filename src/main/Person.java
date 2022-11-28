@@ -41,7 +41,7 @@ public class Person {
     public static Person loadFromFile(String filename, int pos) throws IOException {
         Person person;
         Utilities.getLineFromNumber(pos, filename);
-        String[] personInfo = Utilities.splitString(Utilities.getLineFromNumber(pos, filename), "\t");
+        String[] personInfo = Utilities.splitString(Utilities.getLineFromNumber(pos, filename), ";");
         if (personInfo.length == 3){
             person = new Person(personInfo[0], personInfo[1], personInfo[2]);
         } else {
