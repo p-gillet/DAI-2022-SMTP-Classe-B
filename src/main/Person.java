@@ -5,7 +5,6 @@ public class Person {
     private String lastName;
     private String email;
 
-    // constructor
     public Person(String email){
         this.email = email;
     }
@@ -16,7 +15,6 @@ public class Person {
         this.email = email;
     }
 
-    // getters and setters
     public String getFirstName() {
         return firstName;
     }
@@ -38,8 +36,24 @@ public class Person {
 
     public static Person[] loadFromFile(String filename){
         Person[] people;
+        try {
+            File myObj = new File(filename);
+            Scanner myReader = new Scanner(myObj);
+            while (myReader.hasNextLine()) {
+                String data = myReader.nextLine();
+                System.out.println(data);
 
-
-        return new Person[0];
+                String[] parts = data.split(" ");
+                String firstName = parts[0];
+                String lastName = parts[1];
+                String email = parts[2];
+                people = new Person(firstName, lastName, email);
+            }
+            myReader.close();
+        } catch (FileNotFoundException e) {
+            System.out.println("An error occurred.");
+            e.printStackTrace();
+        }
+        return people;
     }
 }
