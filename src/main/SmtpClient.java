@@ -28,7 +28,7 @@ public class SmtpClient {
             writer.write("DATA");
             writer.write("From: " + "<" + prank.getSender().getEmail() + ">");
             writer.write("To: " + "<" + victims.getPerson(i).getEmail() + ">");
-            writer.write("Subject: " + "Prank");
+            writer.write("Subject: " + prank.getSubject());
             writer.write(prank.getMessage());
             writer.write(".");
             writer.write("QUIT");
