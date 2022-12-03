@@ -7,7 +7,7 @@ import java.util.Vector;
  * Classe App qui permet de lancer le programme
  * @author Jalube Miguel, Gillet Paul
  */
-public class App
+public class Main
 {
     public static final String FILE_SEPARATOR = ";";
     public static final int SMTP_PORT =         2525;
