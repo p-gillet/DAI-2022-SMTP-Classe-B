@@ -1,5 +1,9 @@
 package src.main;
 
+/**
+ * Classe ConfigurationManager qui permet de gérer les paramètres de configuration de l'application
+ * @author Jalube Miguel, Gillet Paul
+ */
 public class ConfigurationManager {
     private String smtpServerAddress;
     private int smtpServerPort;
@@ -8,12 +12,18 @@ public class ConfigurationManager {
 
     private Person sender;
 
-    public ConfigurationManager(String smtpServerAddress, int smtpServerPort, String victimsFilePath, String messagesFilePath, Person sender){
+    /**
+     * Constructeur de la classe ConfigurationManager
+     * @param smtpServerAddress adresse du serveur SMTP
+     * @param smtpServerPort port du serveur SMTP
+     * @param victimsFilePath chemin du fichier contenant les victimes
+     * @param messagesFilePath chemin du fichier contenant les messages(prank)
+     */
+    public ConfigurationManager(String smtpServerAddress, int smtpServerPort, String victimsFilePath, String messagesFilePath){
         this.smtpServerAddress = smtpServerAddress;
         this.smtpServerPort = smtpServerPort;
         this.victimsFilePath = victimsFilePath;
         this.messagesFilePath = messagesFilePath;
-        this.sender = sender;
     }
 
     public String getSmtpServerAddress(){

@@ -2,16 +2,29 @@ package src.main;
 
 import java.io.IOException;
 
+/**
+ * Classe Person qui contient les informations d'une personne et les méthodes qui servent à les recupérer
+ * @author Jalube Miguel, Gillet Paul
+ */
 public class Person {
     private String firstName;
     private String lastName;
     private String email;
 
-    // constructor
+    /**
+     * Constructeur de la classe Person
+     * @param email email de la personne
+     */
     public Person(String email){
         this.email = email;
     }
 
+    /**
+     * Constructeur de la classe Person
+     * @param firstName prénom de la personne
+     * @param lastName nom de la personne
+     * @param email email de la personne
+     */
     public Person(String firstName, String lastName, String email){
         this.firstName = firstName;
         this.lastName = lastName;
@@ -38,6 +51,13 @@ public class Person {
         this.email = email;
     }
 
+    /**
+     * Méthode qui permet de récupérer les informations d'une personne depuis un fichier
+     * @param filename nom du fichier à lire
+     * @param pos position de la personne dans le fichier
+     * @return Personne
+     * @throws IOException
+     */
     public static Person loadFromFile(String filename, int pos) throws IOException {
         Person person;
         Utilities.getLineFromNumber(pos, filename);

@@ -1,25 +1,22 @@
 package src.main;
 
+/**
+ * @author Jalube Miguel, Gillet Paul
+ */
 public class Prank {
-    private final Person sender;
-    private final Group receivers;
+    private final Group victims;
     private final String message;
 
     private final String entete;
 
-    public Prank(Person sender, Group receivers, String message, String entete){
-        this.sender = sender;
-        this.receivers = receivers;
+    public Prank(Group victims, String message, String entete){
+        this.victims = victims;
         this.message = message;
         this.entete = entete;
     }
 
-    public Person getSender(){
-        return sender;
-    }
-
-    public Group getReceivers(){
-        return receivers;
+    public Group getVictims(){
+        return victims;
     }
 
     public String getMessage(){
