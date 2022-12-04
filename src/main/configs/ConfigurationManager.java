@@ -17,6 +17,7 @@ public class ConfigurationManager {
     private String separator;
 
     private Person sender;
+    private final int numberOfVictims;
 
     /**
      * Constructeur de la classe ConfigurationManager
@@ -28,14 +29,14 @@ public class ConfigurationManager {
     public ConfigurationManager(String smtpServerAddress, int smtpServerPort,
                                 String victimsFilePath,
                                 String messagesFilePath, int numberOfGroups,
-                                String separator) {
+                                String separator, int numberOfVictims) {
         this.smtpServerAddress = smtpServerAddress;
         this.smtpServerPort = smtpServerPort;
         this.victimsFilePath = victimsFilePath;
         this.messagesFilePath = messagesFilePath;
         this.numberOfGroups = numberOfGroups;
         this.separator = separator;
-
+        this.numberOfVictims = numberOfVictims;
     }
 
     public String getSmtpServerAddress(){
@@ -78,21 +79,23 @@ public class ConfigurationManager {
         this.sender = sender;
     }
 
-      public int getNumberOfGroups(){
-         return numberOfGroups;
-      }
+    public int getNumberOfGroups(){
+     return numberOfGroups;
+    }
 
-      public void setNumberOfGroups(int numberOfGroups){
-         this.numberOfGroups = numberOfGroups;
-      }
+    public void setNumberOfGroups(int numberOfGroups){
+     this.numberOfGroups = numberOfGroups;
+    }
 
-      public String getSeparator(){
-         return separator;
-      }
+    public String getSeparator(){
+     return separator;
+    }
 
-      public void setSeparator(String separator){
-         this.separator = separator;
-      }
+    public void setSeparator(String separator){
+     this.separator = separator;
+    }
+
+    public int getNumberOfVictims(){ return numberOfVictims; }
 
     public static ConfigurationManager loadFromFile(String filename) throws IOException {
         String separator = Utilities.getLineFromNumber(0, filename);
@@ -103,7 +106,9 @@ public class ConfigurationManager {
         String messagesFilePath = Utilities.getLineFromNumber(4, filename);
         int numberOfGroups = Integer.parseInt(Utilities.getLineFromNumber(5,
            filename));
+        int numberOfVictims = Integer.parseInt(Utilities.getLineFromNumber(6,
+           filename));
         return new ConfigurationManager(smtpServerAddress, smtpServerPort,
-           victimsFilePath, messagesFilePath, numberOfGroups, separator);
+           victimsFilePath, messagesFilePath, numberOfGroups, separator,numberOfVictims);
     }
 }

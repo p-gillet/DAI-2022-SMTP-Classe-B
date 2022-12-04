@@ -24,7 +24,7 @@ public class Main
         SmtpClient smtpClient = new SmtpClient(config.getSmtpServerAddress(), config.getSmtpServerPort());
 
         for (int i = 0; i < config.getNumberOfGroups(); ++i) {
-            smtpClient.sendPrank(prankGenerator.generatePrank(groupsVictims.get(i)));
+            smtpClient.sendPrank(prankGenerator.generatePrank(groupsVictims.get(i)),config.getNumberOfVictims());
         }
 
         System.out.println("Done");

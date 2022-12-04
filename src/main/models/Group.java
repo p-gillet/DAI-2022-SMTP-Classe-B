@@ -73,4 +73,6 @@ public class Group {
         }
         return groups;
     }
+
+    public void removePerson(Person p){ people.remove(p); }
 }
