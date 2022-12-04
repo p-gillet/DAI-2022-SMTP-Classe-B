@@ -1,19 +1,7 @@
 # DAI-2022-SMTP-Classe-B
 
-## Deliverables
-
-You will deliver the results of your lab in a GitHub repository. You do not have to fork a specific repo, you can create one from scratch.
-
-Your repository should contain both the source code of your Java project and your report. Your report should be a single `README.md` file, located at the root of your repository. The images should be placed in a `figures` directory.
-
-Your report MUST include the following sections:
-
-* **A brief description of your project**: if people exploring GitHub find your repo, without a prior knowledge of the API course, they should be able to understand what your repo is all about and whether they should look at it more closely.
-
-* **Instructions for setting up your mock SMTP server (with Docker - which you will learn all about in the next 2 weeks)**. The user who wants to experiment with your tool but does not really want to send pranks immediately should be able to use a mock SMTP server. For people who are not familiar with this concept, explain it to them in simple terms. Explain which mock server you have used and how you have set it up.
-
-* **A description of your implementation**: document the key aspects of your code. It is a good idea to start with a **class diagram**. Decide which classes you want to show (focus on the important ones) and describe their responsibilities in text. It is also certainly a good idea to include examples of dialogues between your client and an SMTP server (maybe you also want to include some screenshots here).
-
+#### Auteurs: Jalube Miguel, Gillet Paul
+#### Date: 04.12.2022
 
 ### Breve description du projet
 
@@ -23,7 +11,26 @@ Mais il est tout a fait possible de changer les paramètres de l'application pou
 
 ### Description de l'implémentation
 
+![classDiagram.png](images_rapport%2FclassDiagram.png)
+
+Trois classes principales sont implémentées dans le projet :
+
+ConfigManager : Cette classe permet de lire le fichier de configuration et de le parser. Les paramètres de configuration sont ensuite utilisés par les autres classes pour envoyer les emails.
+PrankGenerator : Cette classe permet de générer des pranks en utilisant les données du fichier de configuration. Elle utilise la classe ConfigManager pour récupérer les paths des fichiers de victime et de prank.
+SmtpClient : Cette classe permet d'envoyer les emails forgés à une liste de personne via un serveur SMTP. Utilise la classe ConfigManager pour récupérer les configurations du serveur SMTP nécessaire à l'envoie de mail.
+    
+
+
 ### Instructions pour l'installation du serveur SMTP
+
+Pour installer le serveur SMTP mocké, il faut tout d'abord installer Docker sur votre machine.
+Une fois Docker installé, il faut lancer le serveur SMTP mocké en utilisant la commande suivante :
+````agsl
+docker run -p 8080:8282 -p 2525:25000 --rm mmoayyed/mockmock
+````
+
+S'il s'agit de la première fois l'image docker va être téléchargée, ce qui peut prendre un certain temps. 
+Sinon elle va être lancée directement.
 
 ### Qu’est-ce qu'un serveur MockMock ? :
 
@@ -62,7 +69,9 @@ En utilisant la configuration par défaut, il est possible de lancer l'applicati
 et lancé le serveur MockMock.
 
 Pour lancer le serveur MockMock, démarrer docker et lancer la commande suivante :
+````agsl
 docker run -p 8080:8282 -p 2525:25000 --rm mmoayyed/mockmock
+````
 
 Si il s'agit de la première fois l'image docker va d'abord être téléchargée, ce qui peut prendre un certain temps.
 Sinon le serveur MockMock va démarrer et être accessible.
