@@ -1,0 +1,6 @@
+;
+2525
+localhost
+src/main/sourceFiles/victims.txt
+src/main/sourceFiles/messages.txt
+4
