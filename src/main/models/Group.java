@@ -1,4 +1,6 @@
-package src.main;
+package src.main.models;
+
+import src.main.configs.Utilities;
 
 import java.io.IOException;
 import java.util.Vector;

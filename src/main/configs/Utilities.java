@@ -1,4 +1,4 @@
-package src.main;
+package src.main.configs;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -15,7 +15,7 @@ public abstract class Utilities {
      * @param separator le séparateur
      * @return un tableau de chaine de caractère
      */
-    static String[] splitString(String string, String separator){
+    public static String[] splitString(String string, String separator){
         return string.split(separator);
     }
 
@@ -26,7 +26,7 @@ public abstract class Utilities {
      * @return un string contenant la ligne lue
      * @throws IOException
      */
-    static String getLineFromNumber(int number, String filename) throws IOException {
+    public static String getLineFromNumber(int number, String filename) throws IOException {
         String line = "";
 
         BufferedReader reader = new BufferedReader(new FileReader(filename));
@@ -39,11 +39,11 @@ public abstract class Utilities {
 
     /**
      * Fonction qui retourne le nombre de ligne d'un fichier
-     * @param filenam le nom du fichier
+     * @param filename le nom du fichier
      * @return le nombre de ligne du fichier
      * @throws IOException
      */
-    static int countLines(String filename) throws IOException {
+    public static int countLines(String filename) throws IOException {
         int totalLines = 0;
         BufferedReader reader = new BufferedReader(new FileReader(filename));
         while (reader.readLine() != null) totalLines++;

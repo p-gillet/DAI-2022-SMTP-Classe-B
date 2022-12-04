@@ -2,7 +2,8 @@ package src.main.tests;
 
 // Junit tests for the app
 import org.junit.Test;
-import src.main.*;
+import src.main.configs.ConfigurationManager;
+import src.main.models.Person;
 
 import java.io.IOException;
 
@@ -15,7 +16,7 @@ public class AppTest {
     *
     */
    public void testLoadPerson() throws IOException {
-      ConfigurationManager config = ConfigurationManager.loadFromFile("src/main/config.txt");
+      ConfigurationManager config = ConfigurationManager.loadFromFile("src/main/configs/config.txt");
       Person person = Person.loadFromFile(config.getVictimsFilePath(), 2);
       assert(person.getFirstName().equals("Edsel"));
       assert(person.getLastName().equals("Fletcher"));
@@ -28,7 +29,7 @@ public class AppTest {
     *
     */
    public void testLoadGroup() throws IOException {
-      ConfigurationManager config = ConfigurationManager.loadFromFile("src/main/config.txt");
+      ConfigurationManager config = ConfigurationManager.loadFromFile("src/main/configs/config.txt");
       Person person = Person.loadFromFile(config.getVictimsFilePath(), 2);
       assert(person.getFirstName().equals("Edsel"));
       assert(person.getLastName().equals("Fletcher"));

@@ -8,5 +8,3 @@ Entete du 7eme message;Ceci est un 7eme prank de test
 Entete du 8eme message;Ceci est un 8eme prank de test
 Entete du 9eme message;Ceci est un 9eme prank de test
 Entete du 10eme message;Ceci est un 10eme prank de test
-
-

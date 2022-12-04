@@ -1,4 +1,8 @@
-package src.main;
+package src.main.configs;
+
+import src.main.models.Group;
+import src.main.models.Person;
+import src.main.models.Prank;
 
 import java.io.*;
 import java.net.Socket;

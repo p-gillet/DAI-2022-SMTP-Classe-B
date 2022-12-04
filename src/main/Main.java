@@ -1,5 +1,10 @@
 package src.main;
 
+import src.main.configs.ConfigurationManager;
+import src.main.configs.SmtpClient;
+import src.main.models.Group;
+import src.main.models.PrankGenerator;
+
 import java.io.IOException;
 import java.util.Vector;
 
@@ -10,9 +15,8 @@ import java.util.Vector;
 public class Main
 {
     public static void main( String[] args ) throws IOException {
-        ConfigurationManager config = ConfigurationManager.loadFromFile("src/main/config.txt");
-        PrankGenerator prankGenerator = new PrankGenerator(config,
-           config.getSeparator());
+        ConfigurationManager config = ConfigurationManager.loadFromFile("src/main/configs/config.txt");
+        PrankGenerator prankGenerator = new PrankGenerator(config);
 
         Vector<Group> groupsVictims =
            Group.loadGroupsFromFile(config.getVictimsFilePath(), config.getNumberOfGroups());

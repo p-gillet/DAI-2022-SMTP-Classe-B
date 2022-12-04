@@ -1,4 +1,6 @@
-package src.main;
+package src.main.configs;
+
+import src.main.models.Person;
 
 import java.io.IOException;
 

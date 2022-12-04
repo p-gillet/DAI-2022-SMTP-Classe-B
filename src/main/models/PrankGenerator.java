@@ -1,4 +1,7 @@
-package src.main;
+package src.main.models;
+import src.main.configs.ConfigurationManager;
+import src.main.configs.Utilities;
+
 import java.io.*;
 
 /**
@@ -7,30 +10,27 @@ import java.io.*;
  */
 public class PrankGenerator {
     private final ConfigurationManager config;
-    private final String separator;
 
     /**
      * Constructeur de la classe PrankGenerator
-     * @param config
-     * @param separator séparateur de ligne
+     * @param config configuration de l'application
      */
-    public PrankGenerator(ConfigurationManager config, String separator) {
+    public PrankGenerator(ConfigurationManager config) {
         this.config = config;
-        this.separator = separator;
     }
 
     /**
      * Génère un prank
      * @param victims liste des victimes
      * @return le prank généré
-     * @throws IOException
+     * @throws IOException si le fichier des messages n'existe pas
      */
     public Prank generatePrank(Group victims) throws IOException {
         String messageContent;
         int randomLineMsg = (int)(Math.random() * Utilities.countLines(config.getMessagesFilePath()));
         messageContent = Utilities.getLineFromNumber(randomLineMsg, config.getMessagesFilePath());
-        String entete = messageContent.split(separator)[0];
-        String corps = messageContent.split(separator)[1];
+        String entete = messageContent.split(config.getSeparator())[0];
+        String corps = messageContent.split(config.getSeparator())[1];
         return new Prank(victims, corps,entete);
     }
 }
