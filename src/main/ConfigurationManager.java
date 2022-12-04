@@ -1,5 +1,7 @@
 package src.main;
 
+import java.io.IOException;
+
 /**
  * Classe ConfigurationManager qui permet de gérer les paramètres de configuration de l'application
  * @author Jalube Miguel, Gillet Paul
@@ -9,6 +11,8 @@ public class ConfigurationManager {
     private int smtpServerPort;
     private String victimsFilePath;
     private String messagesFilePath;
+    private int numberOfGroups;
+    private String separator;
 
     private Person sender;
 
@@ -19,11 +23,17 @@ public class ConfigurationManager {
      * @param victimsFilePath chemin du fichier contenant les victimes
      * @param messagesFilePath chemin du fichier contenant les messages(prank)
      */
-    public ConfigurationManager(String smtpServerAddress, int smtpServerPort, String victimsFilePath, String messagesFilePath){
+    public ConfigurationManager(String smtpServerAddress, int smtpServerPort,
+                                String victimsFilePath,
+                                String messagesFilePath, int numberOfGroups,
+                                String separator) {
         this.smtpServerAddress = smtpServerAddress;
         this.smtpServerPort = smtpServerPort;
         this.victimsFilePath = victimsFilePath;
         this.messagesFilePath = messagesFilePath;
+        this.numberOfGroups = numberOfGroups;
+        this.separator = separator;
+
     }
 
     public String getSmtpServerAddress(){
@@ -64,5 +74,34 @@ public class ConfigurationManager {
 
     public void setSender(Person sender){
         this.sender = sender;
+    }
+
+      public int getNumberOfGroups(){
+         return numberOfGroups;
+      }
+
+      public void setNumberOfGroups(int numberOfGroups){
+         this.numberOfGroups = numberOfGroups;
+      }
+
+      public String getSeparator(){
+         return separator;
+      }
+
+      public void setSeparator(String separator){
+         this.separator = separator;
+      }
+
+    public static ConfigurationManager loadFromFile(String filename) throws IOException {
+        String separator = Utilities.getLineFromNumber(0, filename);
+        int smtpServerPort = Integer.parseInt(Utilities.getLineFromNumber(1,
+           filename));
+        String smtpServerAddress = Utilities.getLineFromNumber(2, filename);
+        String victimsFilePath = Utilities.getLineFromNumber(3, filename);
+        String messagesFilePath = Utilities.getLineFromNumber(4, filename);
+        int numberOfGroups = Integer.parseInt(Utilities.getLineFromNumber(5,
+           filename));
+        return new ConfigurationManager(smtpServerAddress, smtpServerPort,
+           victimsFilePath, messagesFilePath, numberOfGroups, separator);
     }
 }
