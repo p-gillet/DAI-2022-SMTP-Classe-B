@@ -3,6 +3,8 @@ package src.main.configs;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.util.Base64;
 
 /**
  * Classe qui contient des méthodes utiles à la lecture de fichiers
@@ -49,5 +51,9 @@ public abstract class Utilities {
         while (reader.readLine() != null) totalLines++;
         reader.close();
         return totalLines;
+    }
+
+    public static String toBase64(String string){
+        return new String(Base64.getEncoder().encode(string.getBytes(StandardCharsets.UTF_8)));
     }
 }

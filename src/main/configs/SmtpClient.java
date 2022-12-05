@@ -63,7 +63,9 @@ public class SmtpClient {
             writer.flush();
             writer.write("To: " + receiver.getEmail() + "\r\n");
             writer.flush();
-            writer.write("Subject: " + prank.getEntete() + "\r\n");
+            writer.write("Content-Type: text/plain; charset=utf-8" + "\r\n");
+            writer.flush();
+            writer.write("Subject: =?UTF-8?B?" + Utilities.toBase64(prank.getEntete()) + "?=" + "\r\n");
             writer.flush();
             writer.write("\r\n");
             writer.flush();
